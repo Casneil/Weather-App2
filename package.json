@@ -2,6 +2,7 @@
   "name": "my-weather-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://casneil.github.io/Weather-App2/",
   "dependencies": {
     "@material-ui/core": "^4.4.3",
     "@material-ui/icons": "^4.4.3",
@@ -19,6 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
