@@ -11,7 +11,7 @@ const App = props => {
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("Berlin");
   const [data, setData] = useState([]);
-  // const [threeDays, setThreeDays] = useState([]);
+  const [oneDay, setOneDay] = useState([]);
   // const [fiveDays, setFiveDays] = useState([]);
 
   const getSearch = e => {
@@ -32,6 +32,7 @@ const App = props => {
     const api_call = await fetch(request);
     const response = await api_call.json();
     setData(response);
+    setOneDay(response.data[0]);
 
     // props.dispatchWeather(response.data);
 
@@ -49,14 +50,15 @@ const App = props => {
     // }
   };
 
-  // useEffect(() => {
-  //   getWeather();
-  // }, [query]);
-  // console.log(data);
+  useEffect(() => {
+    getWeather();
+  }, [query]);
+  console.log(data);
+
   return (
     <div className="home">
       <Navbar onSubmit={onSubmit} getSearch={getSearch} />
-      <Home data={[data]} />
+      <Home data={[data]} one={oneDay} />
       <Picker />
     </div>
   );

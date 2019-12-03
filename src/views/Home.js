@@ -14,18 +14,22 @@ import image from "../images/sunshine.jpg";
 const useStyles = makeStyles(theme => ({
   card: {
     display: "flex",
-    margin: 10
+    margin: "auto",
+    maxWidth: 100 + "vh",
+    minWidth: 40 + "vh"
   },
   root: {
     flexGrow: 1
   },
   padding: {
-    paddingTop: "20px"
+    paddingTop: "20px",
+    margin: "auto"
   },
 
   details: {
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    justifyContent: "center"
   },
   content: {
     flex: "1 0 auto"
@@ -48,7 +52,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Home = ({ data }) => {
+const Home = ({ data, one }) => {
+  console.log(one);
+
   const classes = useStyles();
   const theme = useTheme();
   // console.log(data);
@@ -57,6 +63,13 @@ const Home = ({ data }) => {
       {data.map(day => (
         <Grid className={classes.padding} key={day.city_name}>
           <Card className={classes.card}>
+            <>
+              <CardMedia
+                className={classes.cover}
+                image={image}
+                title="Live from space album cover"
+              />
+            </>
             <div className={classes.details}>
               <CardContent className={classes.content}>
                 <Typography component="h5" variant="h5">
@@ -65,19 +78,17 @@ const Home = ({ data }) => {
                 <Typography variant="subtitle1" color="textSecondary">
                   {day.timezone}
                 </Typography>
+
+                <Typography component="h5" variant="h5" color="textSecondary">
+                  + {one.min_temp} - {one.max_temp}
+                </Typography>
+                {/* <Typography component="h5" variant="h5" color="textSecondary">
+                  {one.weather.description}
+                </Typography> */}
                 <br />
               </CardContent>
             </div>
-            <div className="image">
-              <CardMedia
-                className={classes.cover}
-                // image={image}
-                // title="Live from space album cover"
-              />
-            </div>
           </Card>
-
-          {/* <Cards threeDays={threeDays} fiveDays={fiveDays} /> */}
         </Grid>
       ))}
     </Grid>
