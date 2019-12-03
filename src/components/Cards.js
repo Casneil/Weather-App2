@@ -23,8 +23,8 @@ const useStyles = makeStyles({
   }
 });
 
-const Cards = ({ threeDays, fiveDays }) => {
-  console.log(threeDays);
+const Cards = () => {
+  // console.log(threeDays);
 
   const classes = useStyles();
 

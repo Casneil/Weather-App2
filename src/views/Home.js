@@ -13,7 +13,8 @@ import image from "../images/sunshine.jpg";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    display: "flex"
+    display: "flex",
+    margin: 10
   },
   root: {
     flexGrow: 1
@@ -47,10 +48,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Home = ({ data, threeDays, fiveDays }) => {
+const Home = ({ data }) => {
   const classes = useStyles();
   const theme = useTheme();
-  console.log(threeDays);
+  // console.log(data);
   return (
     <Grid container className={classes.root} spacing={2}>
       {data.map(day => (
@@ -70,8 +71,8 @@ const Home = ({ data, threeDays, fiveDays }) => {
             <div className="image">
               <CardMedia
                 className={classes.cover}
-                image={image}
-                title="Live from space album cover"
+                // image={image}
+                // title="Live from space album cover"
               />
             </div>
           </Card>
@@ -83,8 +84,4 @@ const Home = ({ data, threeDays, fiveDays }) => {
   );
 };
 
-function mapStateToProps(store) {
-  return { data: store.weather.list };
-}
-
-export default connect(mapStateToProps)(Home);
+export default Home;
