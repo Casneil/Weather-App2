@@ -1,10 +1,11 @@
 import { getOneDay, getThreeDays, getSevenDays } from "../actions";
+import { recieveData } from "../../components/Api";
 
 const initialState = {
-  data: []
+  data: recieveData
 };
 
-export default (state = initialState, action) => {
+export const weatherReducer = (state = initialState, action) => {
   switch (action.type) {
     case getOneDay:
       return {
@@ -24,6 +25,6 @@ export default (state = initialState, action) => {
       };
 
     default:
-      state;
+      return state;
   }
 };
