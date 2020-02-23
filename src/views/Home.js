@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import Cards from "../components/Cards";
 import Loading from "../components/Loading";
 
+import { getIcon } from "../util/functions";
+
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -44,31 +46,45 @@ const Home = () => {
   const theme = useTheme();
 
   const data = useSelector(state => state.data.data);
+  // const icon = useSelector(state => state.data.weather.description);
   const details = useSelector(state => state.data.details);
   const loading = useSelector(state => state.data.loading);
+  const test = useSelector(state => state.data.oneDay);
 
-  console.log("LOADING: ", loading, "DATA: ", data, "DETAILS: ", details);
+  console.log(
+    "LOADING: ",
+    loading,
+    "DATA: ",
+    data
+    // "DETAILS: ",
+    // details
+    // "ICON: ",
+    // icon
+  );
   // console.log(data);
   return (
     <div className={classes.root}>
-      {loading ? (
-        <Loading />
+      {!loading ? (
+        ""
       ) : (
+        // <Loading />
         <Card>
           <CardContent>
             <Typography className={classes.content} gutterBottom variant="h5">
-              {details.city_name} {details.country_code}
-              <i class="fas fa-cloud-sun-rain"></i>
+              {details.name} {details.country}
+            </Typography>
+            {/* {getIcon(icon)} */}
+            <Typography component="h2" color="textSecondary">
+              timezone: {details.timezone}
             </Typography>
 
-            <Typography component="h2" color="textSecondary">
-              {details.timezone}
-            </Typography>
-            <br />
             <Typography variant="body2" component="p">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
+              {test.main}
+            </Typography>
+
+            <Typography variant="body2" color="textSecondary">
+              {" "}
+              {test.description}
             </Typography>
           </CardContent>
           <CardActions>

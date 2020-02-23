@@ -11,24 +11,31 @@ import {
 
 const initialState = {
   loading: false,
-  data: [],
+  data: {},
   days: {},
-  details: {}
+  details: {},
+  oneDay: {},
+  threeDays: {}
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case SET_DATA:
-      return {
-        ...state,
-        loading: !state.loading,
-        data: action.payload
-      };
     case GET_ONE_DAY:
       return {
         ...state,
-        loading: !state.loading,
-        days: action.payload
+        oneDay: action.payload
+      };
+    case SET_DATA:
+      return {
+        ...state,
+        // loading: !state.loading,
+        data: action.payload
+      };
+    case GET_THREE_DAYS:
+      return {
+        ...state,
+        // loading: !state.loading,
+        threeDays: action.payload
       };
     case GET_DETAILS:
       return {
@@ -38,7 +45,7 @@ export default function(state = initialState, action) {
     case GET_THREE_DAYS:
       return {
         ...state,
-        loading: !state.loading,
+        // loading: !state.loading,
         days: action.payload
       };
     case GET_SEVEN_DAYS:
