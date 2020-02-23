@@ -56,19 +56,15 @@ const Home = () => {
       ) : (
         <Card>
           <CardContent>
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              gutterBottom
-            >
-              Word of the Day
+            <Typography className={classes.content} gutterBottom variant="h5">
+              {details.city_name} {details.country_code}
+              <i class="fas fa-cloud-sun-rain"></i>
             </Typography>
-            <Typography variant="h5" component="h2">
-              hahahahaahahaah
+
+            <Typography component="h2" color="textSecondary">
+              {details.timezone}
             </Typography>
-            <Typography className={classes.pos} color="textSecondary">
-              adjective
-            </Typography>
+            <br />
             <Typography variant="body2" component="p">
               well meaning and kindly.
               <br />

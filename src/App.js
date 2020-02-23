@@ -32,9 +32,9 @@ const App = () => {
     dispatch(getData(request));
   };
 
-  // useEffect(() => {
-  //   initialData();
-  // }, [query]);
+  useEffect(() => {
+    initialData();
+  }, [query]);
 
   return (
     <div className="home">
