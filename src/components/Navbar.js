@@ -61,20 +61,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Navbar = props => {
-  // const [updateSearch, setUpdatedSearch] = useState("");
-  // const [updateQuery, setUpdatedQuery] = useState("Berlin");
-
-  // const handelUpdate = e => {
-  //   setUpdatedSearch(e.target.value);
-  //   // console.log(query);
-  // };
-
-  // const handelSubmit = e => {
-  //   e.preventDefault();
-  //   setUpdatedQuery(updateSearch);
-  // };
-
+const Navbar = ({ getSearch, onSubmit }) => {
   const classes = useStyles();
 
   return (
@@ -88,9 +75,9 @@ const Navbar = props => {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <form onSubmit={props.onSubmit}>
+            <form onSubmit={onSubmit}>
               <InputBase
-                onChange={props.getSearch}
+                onChange={getSearch}
                 placeholder="Search City"
                 classes={{
                   root: classes.inputRoot,
