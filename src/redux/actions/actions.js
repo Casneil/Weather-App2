@@ -3,7 +3,8 @@ import {
   GET_SEVEN_DAYS,
   GET_THREE_DAYS,
   LOADING_DATA,
-  SET_DATA
+  SET_DATA,
+  GET_DETAILS
 } from "../types";
 
 import axios from "axios";
@@ -16,8 +17,10 @@ export const getData = url => dispatch => {
     .then(response => {
       dispatch({
         type: SET_DATA,
-        payload: response.data
+        payload: response.data.data
       });
+      dispatch({ type: GET_DETAILS, payload: response.data });
     })
+
     .catch(error => console.log(error));
 };

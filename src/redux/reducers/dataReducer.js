@@ -5,13 +5,15 @@ import {
   GET_SEVEN_DAYS,
   GET_THREE_DAYS,
   LOADING_DATA,
-  SET_DATA
+  SET_DATA,
+  GET_DETAILS
 } from "../types";
 
 const initialState = {
   loading: false,
-  data: {},
-  days: {}
+  data: [],
+  days: {},
+  details: {}
 };
 
 export default function(state = initialState, action) {
@@ -27,6 +29,11 @@ export default function(state = initialState, action) {
         ...state,
         loading: !state.loading,
         days: action.payload
+      };
+    case GET_DETAILS:
+      return {
+        ...state,
+        details: action.payload
       };
     case GET_THREE_DAYS:
       return {
